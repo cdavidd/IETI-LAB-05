@@ -1,8 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Heroku
+## Firebase
 
-https://task-planner-part.herokuapp.com/
+https://console.firebase.google.com/project/taks-planner-app-e7a46/overview
+https://taks-planner-app-e7a46.firebaseapp.com/
 
 Credenciales de ingreso:
 

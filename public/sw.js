@@ -3,7 +3,13 @@ importScripts("/cache-polyfill.js");
 self.addEventListener("install", function(e) {
   e.waitUntil(
     caches.open("pepe").then(function(cache) {
-      return cache.addAll(["/", "/index.html", "/home"]);
+      return cache.addAll([
+        "/",
+        "/index.html",
+        "/home",
+        "/new-task",
+        "/user-profile"
+      ]);
     })
   );
 });
