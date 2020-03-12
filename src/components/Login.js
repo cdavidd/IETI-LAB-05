@@ -9,6 +9,7 @@ import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import "./Login.css";
+import axios from "axios";
 
 export class Login extends React.Component {
   constructor(props) {
@@ -30,9 +31,32 @@ export class Login extends React.Component {
     });
   }
   handleSubmit(e) {
+    /*
     const user = "pepe@mail.com";
     const pass = "123";
+    */
     e.preventDefault();
+
+    axios
+      .post("http://localhost:8080/user/login", {
+        username: "xyz",
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(function(response) {
+        console.log(response.data);
+        //this.props.login();
+        localStorage.setItem("accessToken", response.data.accessToken);
+        //localStorage.setItem("email", this.state.email);
+        //localStorage.setItem("password", this.state.password);
+        document.location.href = "/home";
+      })
+      .catch(function(error) {
+        console.log(error);
+        alert("Correo o password incorrecto");
+      });
+
+    /*
     if (
       localStorage.getItem("email") === null ||
       localStorage.getItem("password") === null
@@ -48,10 +72,7 @@ export class Login extends React.Component {
       alert("Correo o password incorrecto");
       return;
     }
-    localStorage.setItem("email", this.state.email);
-    localStorage.setItem("password", this.state.password);
-    this.props.login();
-    document.location.href = "/home";
+    */
   }
   render() {
     return (
